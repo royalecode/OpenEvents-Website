@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, nofollow">
+    <title>Create Event</title>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/createEvent.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <header>
+        <section class="header">
+            <h1>Open Events</h1>
+            <div class="icons-head">
+                <img src="../media/Icons/Search.svg" alt="Search">
+                <img src="../media/Icons/Shutdown.svg" alt="Log out">
+            </div>
+        </section>
+        <nav class="low-header">
+            <a><b>Timeline</b></a>
+            <a><b>FriendShips</b></a>
+            <a href="../html/profile.html"><b>Profile</b></a>
+        </nav>
+    </header>
+    <main>
+        <figure>
+            <img class="upload-image" src="../media/upload.png" alt="Image of Upload">
+            <figcaption>Upload Image Event</figcaption>
+        </figure>
+        <form action="">
+            <input class="input-form"  type="text" id="name" name="name" placeholder="Name:"><br>
+            <input class="input-form" type="text" id="location" name="location" placeholder="Location:"><br>
+            <input class="input-form" type="text" id="area" name="area" placeholder="Description:"><br>  
+            <div class="start-date">
+                <label class="label-date" for="start-date">Start-Date:</label>              
+                <input class="indate" class="input-form" type="date" id="start-date" name="start-date"><br>
+            </div>
+            <div class="end-date">
+                <label class="label-date" for="end-date">End-Date:</label>
+                <input class="indate" class="input-form" type="date" id="end-date" name="end-date"><br>
+            </div>
+            <input class="input-form" type="text" id="type" name="type" placeholder="Type Event:"><br>
+            <input class="input-form" type="number" id="participators" name="participators" placeholder="Max Participators:"><br>
+            <input class="create-button" type="submit" value="CREATE">
+        </form>
+        <a class="back-button" href="">BACK</a>
+    </main>
+</body>
+</html>

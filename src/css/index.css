@@ -1,0 +1,46 @@
+.header {
+    background-color: #7AA7EC;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.low-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #92B5EA;
+}
+
+h1 {
+    font-size: 1.5em;
+    text-align: left;
+    margin-left: 0.5em;
+    transition: transform 1s;
+}
+
+.icons-head {
+    margin-right: 1em;
+}
+
+a {
+    margin: 1em 0em 1em 0em;
+    text-decoration: none;
+    color: rgb(41, 40, 40);
+    transition: 1s;
+}
+
+main {
+    margin: 1em;
+}
+
+nav > a:hover {
+    color: white;
+}
+
+h1:hover{
+    transform: rotate(1080deg);
+    color: white;
+}

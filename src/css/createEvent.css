@@ -1,0 +1,77 @@
+.create-button {
+    background-color: #92B5EA;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 8px 25px 8px 25px;
+    border: solid 2px #4d8be7;
+    font-size: 1em;
+    margin: 2em 0em 0.1em 0em;
+    width: 100%;
+}
+
+.back-button {
+    display: block;
+    text-align: center;
+    background-color: rgba(128, 128, 128, 0.479);
+    color: black;
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 8px 25px 8px 25px;
+    border: solid 2px black;
+    font-size: 1em;
+}
+
+.input-form {
+    margin: 0.5em;
+    color: rgb(116, 113, 113);
+    border: 0;
+    width: 90%;
+}
+
+.input-form:hover {
+    border: solid 1px black
+}
+
+.start-date, .end-date {
+    color: rgb(116, 113, 113);
+    display: flex;
+    margin: 0.5em;
+}
+
+.label-date {
+    width: 6em;
+}
+
+.indate {
+    width: 60%;
+    border: 0;
+}
+
+.upload-image {
+    display: block;
+    width: 10rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+figcaption {
+    text-align: center;
+    color: rgb(116, 113, 113);
+}
+
+@media only screen and (min-width: 600px) {
+    main {
+        margin: 1em 4em 1em 4em;
+    }
+}
+
+@media only screen and (min-width: 950px) {
+    main {
+        margin: 1em 10em 1em 10em;
+    }
+    
+    .upload-image {
+        width: 5em;
+    }
+}
