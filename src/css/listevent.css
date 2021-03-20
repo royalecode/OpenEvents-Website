@@ -32,13 +32,13 @@
 .list-header {
     display: flex;
     justify-content: space-around;
-    text-align: center;
 }
 
 .titles > p {
     font-size: 1.2em;
     margin-bottom: 0;
     margin-top:  0.5em;
+    text-align: center;
 }
 
 .icons-event {
