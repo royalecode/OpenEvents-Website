@@ -1,0 +1,66 @@
+/* Edmon Bosch Bosch
+Fitxer css amb link des de register.html.
+*/
+
+header {
+    background-color: #7AA7EC;
+    padding: 1px;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: left;
+    margin-top: 0.5em;
+}
+
+main {
+    margin: 1em;
+}
+
+.textInput {
+    width: 100%;
+    padding: 5px;
+    margin: 0px 0px 5px 0px;
+    border: none;
+    border-bottom: solid 1px black;
+    color: rgb(116, 113, 113);
+}
+
+.login-button {
+    background-color:  rgb(122, 108, 108);
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 8px 25px 8px 25px;
+    border: solid 2px black;
+    font-size: 1em;
+    width: 100%;
+    margin: 0.5em 0em 0.5em 0em;
+}
+
+.register-button {
+    display: block;
+    text-align: center;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 8px 25px 8px 25px;
+    border: solid 2px black;
+    font-size: 1em;
+}
+
+@media only screen and (min-width: 600px) {
+    main {
+        margin: 1em 4em 1em 4em;
+    }
+}
+
+@media only screen and (min-width: 950px) {
+    main {
+        margin: 1em 20em 1em 20em;
+    }
+}

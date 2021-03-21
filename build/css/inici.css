@@ -1,0 +1,72 @@
+/* Edmon Bosch Bosch
+Fitxer css amb link des de index.html.
+*/
+
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 3em;
+}
+
+body {
+    background-image: url(../media/imatge_inici.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background-color: white;
+    padding: 1em;
+}
+
+a {
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 8px 25px 8px 25px;
+    border: solid 2px black;
+    font-size: 1.5em;
+}
+
+.login-button {
+    background-color: white;
+    color: black;
+}
+
+.register-button {
+    background-color: rgb(122, 108, 108);
+    color: white;
+}
+
+@media only screen and (min-width: 600px) {
+    body {
+        background-image: url(../media/walking_people_inici.jpg); 
+    }
+
+    h1 {
+        font-size: 7em;
+        color: rgb(34, 78, 128);
+    }
+    
+    a{
+        font-size: 2em;
+    }
+    footer {
+        padding: 0em;
+        background-color: transparent;
+        margin-bottom: 1.5em;
+    }
+}

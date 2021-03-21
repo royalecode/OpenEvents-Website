@@ -1,0 +1,90 @@
+/* Edmon Bosch Bosch
+Fitxer css amb link des de listevent.html.
+*/
+
+.but-create {
+    background-color: #92B5EA;
+    color: black;
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 6px 25px 6px 25px;
+    border: solid 2px #4d8be7;
+    font-size: 1em;
+    margin: 0.5em auto 0.5em auto;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+.event-list {
+    margin-top: 1em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+}
+
+.event {
+    width: 20.5em;
+    margin-bottom: 1.5em;
+    margin-right: 1.5em;
+    background-color: #F9F4F4;
+    border: solid 1px #E5E5E5;
+    border-radius: 17px;
+    padding: 0.5em;
+    -webkit-box-shadow: 0 4px 10px -2px gray;
+            box-shadow: 0 4px 10px -2px gray;
+}
+
+.list-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+}
+
+.titles > p {
+    font-size: 1.2em;
+    margin-bottom: 0;
+    margin-top:  0.5em;
+    text-align: center;
+}
+
+.icons-event {
+    display: block;
+    text-align: right;
+    margin-top: -2em;
+}
+
+.list-info {
+    text-align: justify;
+    padding: 0 0.5em;
+}
+
+@media only screen and (min-width: 767px) {
+    .event-list {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        position: fixed;
+        left: 50%;
+        top: 20em;
+        -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+      }
+}
