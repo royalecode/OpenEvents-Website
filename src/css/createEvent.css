@@ -39,6 +39,8 @@ Fitxer css amb link des de createEvent.html.
 
 .start-date, .end-date {
     color: rgb(116, 113, 113);
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     margin: 0.5em;
 }

@@ -3,7 +3,8 @@ Fitxer css amb link des de timeline.html.
 */
 
 *{
-    box-sizing: border-box; 
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; 
 }
 
 .timeline-table{

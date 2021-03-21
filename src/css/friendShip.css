@@ -3,11 +3,18 @@ Fitxer css amb link des de friendship.html.
 */
 
 .pair-friends {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 .friend {
+    display:-webkit-box;
+    display:-ms-flexbox;
     display:flex;
     width: 20.5em;
     margin-bottom: 1.5em;
@@ -16,13 +23,20 @@ Fitxer css amb link des de friendship.html.
     border: solid 1px #E5E5E5;
     border-radius: 17px;
     padding: 0.5em;
-    box-shadow: 0 4px 10px -2px gray;
+    -webkit-box-shadow: 0 4px 10px -2px gray;
+            box-shadow: 0 4px 10px -2px gray;
 }
 
 .options {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 
 .info {
@@ -55,14 +69,21 @@ Fitxer css amb link des de friendship.html.
 
 @media only screen and (min-width: 767px) {
     .pair-friends {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: row;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
     }
 
     .friends-list {
         position: fixed;
         left: 50%;
         top: 20em;
-        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
       }
 }
