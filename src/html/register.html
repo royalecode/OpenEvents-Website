@@ -21,12 +21,12 @@ Fitxer que permet registrar-se a la xarxa social Open Events.
     </header>
     <main>
         <h2>Register</h2>
-        <form id="register-form">
+        <form id="register-form" method="post">
             <input class="textInput" type="text" id="fname" name="fname" placeholder="Name:"><br><br>
             <input class="textInput" type="text" name="lname" id="lname" placeholder="Last Name:"><br><br>
             <input class="textInput" type="text" name="email" id="email" placeholder="Email:"><br><br>
             <input class="textInput" type="password" name="pwd" id="pwd" placeholder="Password:"><br><br>
-
+            <input id="file" type="file" required>
             <p>By signing up, you agree to Photo's Terms of Service and Privacy Policy</p><br>
             <input class="login-button" type="submit" id="submit-btn" value="SIGN UP"><br>
         </form>
