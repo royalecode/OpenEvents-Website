@@ -13,6 +13,7 @@ Fitxer perquè l'usuari pugui iniciar sessió a la pàgina web.
     <title>Login</title>
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/login.css">
+    <script type="text/javascript" src="../js/login.js"></script>
 </head>
 <body>
     <header>
@@ -20,12 +21,16 @@ Fitxer perquè l'usuari pugui iniciar sessió a la pàgina web.
     </header>
     <main>
         <h2>Log in</h2>
-        <form action="listevent.html">
+        <form name="login-form">
             <input class="textInput" type="text" id="email" name="email" placeholder="Email:"><br><br>
-            <input class="textInput" type="text" name="pwd" id="pwd" placeholder="Password:"><br><br>
+            <input class="textInput" type="password" name="pwd" id="pwd" placeholder="Password:"><br><br>
             <p>WELCOME BACK! HAVE A GOOD TIME!</p><br>
-            <input class="login-button" type="submit" value="LOG IN"><br>
+            <!--
+                <input class="login-button" type="submit" value="LOG IN"><br>
+
+            -->
         </form>
+        <a class="login-button" id="login-button">LOG IN</a>
         <a class="register-button" href="register.html">SIGN UP</a>
     </main>
 </body>

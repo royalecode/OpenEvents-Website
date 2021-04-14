@@ -13,6 +13,7 @@ Fitxer que permet registrar-se a la xarxa social Open Events.
     <title>Sign Up</title>
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/register.css">
+    <script type="text/javascript" src="../js/register.js"></script>
 </head>
 <body>
     <header>
@@ -20,14 +21,14 @@ Fitxer que permet registrar-se a la xarxa social Open Events.
     </header>
     <main>
         <h2>Register</h2>
-        <form action="listevent.html">
+        <form id="register-form">
             <input class="textInput" type="text" id="fname" name="fname" placeholder="Name:"><br><br>
             <input class="textInput" type="text" name="lname" id="lname" placeholder="Last Name:"><br><br>
             <input class="textInput" type="text" name="email" id="email" placeholder="Email:"><br><br>
-            <input class="textInput" type="text" name="pwd" id="pwd" placeholder="Password:"><br><br>
+            <input class="textInput" type="password" name="pwd" id="pwd" placeholder="Password:"><br><br>
 
             <p>By signing up, you agree to Photo's Terms of Service and Privacy Policy</p><br>
-            <input class="login-button" type="submit" value="SIGN UP"><br>
+            <input class="login-button" type="submit" id="submit-btn" value="SIGN UP"><br>
         </form>
         <a class="register-button" href="login.html">LOG IN</a>
     </main>
