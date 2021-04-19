@@ -12,23 +12,30 @@ function loginLoaded() {
             password: document.getElementById('pwd').value
         };
 
-        fetch("http://puigmal.salle.url.edu/api/users/login", {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data.accessToken);
-            token = data.accessToken;
-        })
-        .catch(ex => {
-            console.log(ex);
-        });
+        if(data.email === "" || data.password === ""){
+            let p = document.getElementById('errors');
+            let t = document.createTextNode("Te falta introducir uno de los campos");
+            p.appendChild(t); 
+        }else{
         
-        //window.open("../html/listevent.html");
-        //window.location.replace("../html/listevent.html");
+            fetch("http://puigmal.salle.url.edu/api/users/login", {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify(data),
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data.accessToken);
+                token = data.accessToken;
+                localStorage.setItem('token', token);
+            })
+            .catch(ex => {
+                console.log(ex);
+            });
+            
+            window.location.replace("../html/listevent.html");
+        }
     });
 }
