@@ -30,12 +30,14 @@ function loginLoaded() {
                 console.log(data.accessToken);
                 token = data.accessToken;
                 localStorage.setItem('token', token);
+                if(token){
+                    window.location.replace("../html/listevent.html");
+                }
             })
             .catch(ex => {
                 console.log(ex);
             });
             
-            window.location.replace("../html/listevent.html");
         }
     });
 }
