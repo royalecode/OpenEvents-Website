@@ -17,8 +17,12 @@ class User{
         return this._id;
     }
 
-    get fullname(){
-        return this._name + " " + this._lastname;
+    get name(){
+        return this._name;
+    }
+
+    get lastname(){
+        return this._lastname
     }
 
     get email(){
@@ -33,8 +37,8 @@ class User{
         this._name = name;
     }
 
-    set last_name(last_name){
-        this._lastname = last_name;
+    set lastname(lastname){
+        this._lastname = lastname;
     }
 
     set email(email){
@@ -77,19 +81,11 @@ function parseJwt (token) {
     return JSON.parse(jsonPayload);
 };
 
-function updateProfile(name, email, option){
+function updateProfile(obj){
     const formData = new FormData();
-    if(option === 0){
-        formData.append('name', name.split(" ")[0]);
-        formData.append('last_name', name.split(" ")[1]);
-    }else if (option ===1){
-        formData.append('email', email);
-    }else {
-        formData.append('name', name.split(" ")[0]);
-        formData.append('last_name', name.split(" ")[1]);
-        formData.append('email', email);
+    for ( var key in obj ) {
+        formData.append(key, obj[key]);
     }
-    
     console.log(formData);
 
     var token = localStorage.getItem('token');
