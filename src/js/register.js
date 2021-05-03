@@ -17,13 +17,20 @@ function pageLoaded() {
             method: "post",
             body: formData,
         })
-        .then((response) => response.json())
-        .then((data) => console.log(data))
+        .then((response) => {
+            if (!response.ok) {
+                response.json().then((error) => {
+                    console.log(error);
+                });
+            } else {
+                response.json().then((data) => {
+                    console.log("Usari registrat correctament");
+                    window.location.replace("../html/login.html");
+                });
+            }
+        })
         .catch(ex => {
             console.log(ex);
-        });
-
-        window.location.replace("../html/login.html");
-        
+        });        
     });
 }

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/profile.css">
     <link rel="stylesheet" href="../css/index.css">
+    <script type="module" src="../js/appProfile.js"></script>
 </head>
 <body>
     <header>
@@ -20,7 +21,7 @@
             <h1>Open Events</h1>
             <div class="icons-head">
                 <a href="search.html"><img src="../media/Icons/Search.svg" alt="Search"></a>
-                <a href="index.html"><img src="../media/Icons/Shutdown.svg" alt="Log out"></a>
+                <a href="index.html" id="logoutIcon"><img src="../media/Icons/Shutdown.svg" alt="Log out"></a>
             </div>
         </section>
         <nav class="low-header">
@@ -30,15 +31,15 @@
         </nav>
     </header>
     <main class="desktop-screen-fix">
-        <img class="avatar" src="../media/avatar.png" alt="Avatar Image">
+        <img class="avatar" id="imageProfile" src="../media/avatar.png" alt="Avatar Image">
         <section class="data">
             <div>
                 <h3>Name:</h3>
-                <p>Edmon Bosch Bosch</p>
+                <input type="text" name="name" id="name"/>
             </div>
             <div>
                 <h3>Email:</h3>
-                <p>edmonbosch@students.salle.url.edu</p>
+                <input type="email" name="email" id="email"/>
             </div>
             <div>
                 <h3>Password</h3>
@@ -50,8 +51,8 @@
         </section>    
     </main>
     <footer>
-        <a class="edit-button">Edit</a>
-        <a class="del-button">Delete Profile</a>
+        <a class="edit-button" id="saveBtn">Save Changes</a>
+        <a class="del-button" id="deleteBtn">Delete Profile</a>
     </footer>
 </body>
 </html>
