@@ -21,6 +21,10 @@ function pageLoaded() {
             if (!response.ok) {
                 response.json().then((error) => {
                     console.log(error);
+                    p = document.getElementById('errResponse');
+                    p.innerHTML = "";
+                    t = document.createTextNode("Something wrong with data, or maybe try to login");
+                    p.appendChild(t);
                 });
             } else {
                 response.json().then((data) => {

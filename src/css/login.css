@@ -31,14 +31,17 @@ main {
 
 .login-button {
     background-color:  rgb(122, 108, 108);
+    display: inline-block;
+    text-align: center;
     color: white;
     border-radius: 10px;
     text-decoration: none;
     padding: 8px 25px 8px 25px;
     border: solid 2px black;
     font-size: 1.5em;
-    width: 100%;
+    width: 85%;
     margin: 1em 0em 1em 0em;
+    margin: 1 auto;
 }
 
 .register-button {
@@ -53,6 +56,11 @@ main {
     font-size: 1.5em;
 }
 
+#errors {
+    color: red;
+    text-align: center;
+}
+
 @media only screen and (min-width: 600px) {
     main {
         margin: 2em 4em 2em 4em;
@@ -62,5 +70,9 @@ main {
 @media only screen and (min-width: 950px) {
     main {
         margin: 2em 20em 2em 20em;
+    }
+
+    .login-button {
+        width: 91%;
     }
 }

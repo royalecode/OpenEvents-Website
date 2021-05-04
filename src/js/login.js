@@ -4,6 +4,7 @@ function loginLoaded() {
     console.log('Page loaded');
     
     let token;
+    let p = document.getElementById('errors');
     var loginButton = document.getElementById('login-button');
     loginButton.addEventListener('click', () => {
 
@@ -13,8 +14,8 @@ function loginLoaded() {
         };
 
         if(data.email === "" || data.password === ""){
-            let p = document.getElementById('errors');
-            let t = document.createTextNode("Te falta introducir uno de los campos");
+            p.innerHTML = "";
+            let t = document.createTextNode("Missing one or two fields");
             p.appendChild(t); 
         }else{
         
@@ -32,6 +33,10 @@ function loginLoaded() {
                 localStorage.setItem('token', token);
                 if(token){
                     window.location.replace("../html/listevent.html");
+                }else{
+                    p.innerHTML = "";
+                    let t = document.createTextNode("Login incorrect, have you tried to sign up?");
+                    p.appendChild(t); 
                 }
             })
             .catch(ex => {

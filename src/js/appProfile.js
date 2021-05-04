@@ -16,7 +16,11 @@ function profileLoad() {
     let image = document.getElementById('imageProfile');
 
     var token = localStorage.getItem('token');
-    let id = parseJwt(token).id;
+    let id;
+    if(token){
+        id = parseJwt(token).id;
+    }
+    
     fetch(`http://puigmal.salle.url.edu/api/users/${id}`, {
         method: "GET",
         headers: {
@@ -25,7 +29,7 @@ function profileLoad() {
     })
     .then((res) => res.json())
     .then((data) => {
-        if(data.length === 0){
+        if(data.length == null){
             console.log("La informació de l'usuari no s'ha trobat o bé no existeix cap usuari amb la id corresponent");
         }else{
             console.log(data);
@@ -71,46 +75,6 @@ function saveCallback(){
     name.value = "";
     lastname.value = "";
     email.value = "";
-    console.log("hoalahal");
-
-    /*if(name.value != user.name || email.value != user.email || lastname.value != user.lastname){
-        if(name.value === "" && email.value === ""){
-            console.log('Input no omplerts, no acutalitzem usuari');
-            
-        }else if (name.value === "" && email.value != ""){
-            console.log('Actualitzem nomes el email')
-            updateProfile(name.value, email.value, 1);
-                user.email = email.value;
-                email.placeholder = user.email;
-                email.value = "";
-                //location.reload();
-            
-
-        }else if(name.value != "" && email.value === ""){
-            console.log('Actualizem nomes el name');
-            updateProfile(name.value, email.value, 0);
-                user.name = name.value.split(' ')[0];
-                user.last_name = name.value.split(' ')[1];
-                name.placeholder = user.fullname;
-                name.value = "";
-                //location.reload();
-            
-
-        }else {
-            console.log('Actualitzem tant el nom com el correu');
-            updateProfile(name.value, email.value, 2);
-                user.name = name.value.split(' ')[0];
-                user.last_name = name.value.split(' ')[1];
-                name.placeholder = user.fullname;
-                user.email = email.value;
-                email.placeholder = user.email;
-                name.value = "";
-                email.value = "";
-                console.log("hoalahal");
-               
-                //location.reload();
-            
-        }
-    }*/
+    
 }
 

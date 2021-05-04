@@ -53,6 +53,37 @@ main {
     font-size: 1em;
 }
 
+#errResponse {
+    color: red;
+    text-align: center;
+}
+
+label {
+	display: block;
+	width: 30vw;
+	max-width: 100px;
+	background-color: #7AA7EC;
+	border-radius: 2px;
+	font-size: 1em;
+	line-height: 2.5em;
+	text-align: center;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+label:hover {
+	background-color: cornflowerblue;
+}
+
+label:active {
+	background-color: mediumaquamarine;
+}
+
+#file {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute;
+}
+
 @media only screen and (min-width: 600px) {
     main {
         margin: 1em 4em 1em 4em;
