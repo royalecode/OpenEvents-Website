@@ -1,4 +1,9 @@
+import { logoutUser, User, parseJwt, security } from './basicFunctionalities.js'
+security();
+import { deleteProfile, updateProfile } from './moduleProfile.js';
+
 window.addEventListener('load', profileLoad);
+
 let logoutIcon = document.getElementById('logoutIcon');
 let deleteBtn = document.getElementById('deleteBtn');
 let saveBtn = document.getElementById('saveBtn');
@@ -6,7 +11,6 @@ let name = document.getElementById('name');
 let lastname = document.getElementById('lastname');
 let email = document.getElementById('email');
 let user;
-import {logoutUser, deleteProfile, parseJwt, User, updateProfile} from './modules.js';
 
 function profileLoad() {
     logoutIcon.addEventListener('click', logoutCallback);
