@@ -1,24 +1,68 @@
 /* Edmon Bosch Bosch
 Fitxer css amb link des de friendship.html.
 */
+@import url('https://rsms.me/inter/inter.css');
 
-.pair-friends {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+.archive {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15em, auto));
+    grid-auto-columns: max-content;
+    grid-gap: 32px;
+    grid-auto-flow: dense;
+    margin-left: 1em;
+    margin-right: 2em;
 }
 
+/* Single column display for phones */
+@media (max-width: 798px) {
+    .archive {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+main{
+    text-align: center;
+    font-size: 20px;
+    color: black;
+    margin: 0.2rem 0 3rem 0;
+}
+
+.buttons {
+    padding: 10px 0 10px;
+}
+  
+.button {
+    transition: all .2s ease-in-out;
+    -webkit-appearance: none;
+    border-radius: 100px;
+    font-family: inherit;
+    appearance: none;
+    background: #6996BF;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px 20px;
+    outline: none;
+    opacity: 0.4;
+    border: none;
+    color: black;
+    margin: 0.5rem;
+}
+  
+.button:hover,
+.button.active {
+    opacity: 1;
+    color: white;
+}
+
+
 .friend {
+    text-align: left;
     display:-webkit-box;
     display:-ms-flexbox;
     display:flex;
-    width: 20.5em;
-    margin-bottom: 1.5em;
-    margin-right: 1.5em;
+    width: 100%;
     background-color: #F9F4F4;
     border: solid 1px #E5E5E5;
     border-radius: 17px;
@@ -31,6 +75,7 @@ Fitxer css amb link des de friendship.html.
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
+    
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -58,6 +103,10 @@ Fitxer css amb link des de friendship.html.
     display: block;
 }
 
+.delIcon {
+    margin-left: 0.5em;
+}
+
 .fship {
     background-color: #6996BF;
     border-radius: 10px;
@@ -67,23 +116,8 @@ Fitxer css amb link des de friendship.html.
     margin-right: 1.5em;
 }
 
-@media only screen and (min-width: 767px) {
-    .pair-friends {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: row;
-                flex-direction: row;
-    }
-
-    .friends-list {
-        position: fixed;
-        left: 50%;
-        top: 20em;
-        -webkit-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-                transform: translate(-50%, -50%);
-      }
+@media only screen and (max-width: 413px) {
+    main {
+        font-size: 1rem;
+    }   
 }
