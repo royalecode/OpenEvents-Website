@@ -33,7 +33,7 @@ function updateProfile(obj){
     console.log(formData);
 
     var token = localStorage.getItem('token');
-    fetch(`http://puigmal.salle.url.edu/api/users/${parseJwt(localStorage.getItem('token')).id}`, {
+    fetch(`http://puigmal.salle.url.edu/api/users/`, {
         method: "PUT",
         headers: {
             'Authorization': `Bearer ${token}`,
