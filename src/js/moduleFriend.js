@@ -1,4 +1,4 @@
-import { User } from './basicFunctionalities.js';
+import { User, parseJwt } from './basicFunctionalities.js';
 
 function getMyFriends(){
     var token = localStorage.getItem('token');
@@ -63,7 +63,6 @@ function requestFriendShip(){
         if(data.length == 0){
             console.log("No hi ha requests");
         }else{
-            console.log(data);
             const users = [];
             data.map((m) => users.push(new User(m)));
             console.log(users)
@@ -123,6 +122,62 @@ function sendFriendShip(){
         });
 }
 
+async function exploreNewUsers(){
+    var token = localStorage.getItem('token');
+    const friends = [];
+    const users = [];
+
+    fetch(`http://puigmal.salle.url.edu/api/friends`, {
+        method: "GET",
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then((res) => res.json())
+    .then((data) => {
+        if(data.length == 0){
+            console.log("El usuari no té amics");
+        }else{
+            data.map((m) => friends.push(new User(m)));
+            console.log(friends);
+
+            fetch(`http://puigmal.salle.url.edu/api/users`, {
+                method: "GET",
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                if(data.length == 0){
+                    console.log("No hi ha usuaris a la platafroma");
+                }else{
+                    const users = [];
+                    data.map((m) => users.push(new User(m)));
+
+                    const exploreNewUsers = [];
+                    users.forEach(e => {
+                        friends.forEach(f => {
+                            if(e.id != f.id && e.id != parseJwt(token).id){
+                                exploreNewUsers.push(e);
+                            }
+                        })
+                    })
+
+                    console.log(exploreNewUsers);
+                    exploreNewUsers.map((e) => panelFriend(e, -1));
+                }
+            })
+            .catch(ex => {
+                console.log(ex);
+            });
+        }
+    })
+    .catch(ex => {
+        console.log(ex);
+    });
+}
+
 function panelFriend(user, type){
 
     let archive = document.getElementById('archive');
@@ -180,15 +235,20 @@ function panelFriend(user, type){
     let chat = document.createElement('img');
     chat.setAttribute('alt', 'chat');
     chat.setAttribute('src', '../media/Icons/chat.svg');
-    let del = document.createElement('img');
-    del.setAttribute('alt', 'delete');
-    del.setAttribute('class', 'delIcon');
-    del.setAttribute('src', '../media/Icons/deleteFriendIcon.png');
-    del.setAttribute('id', user.id);
+    if(type != -1){
+        let del = document.createElement('img');
+        del.setAttribute('alt', 'delete');
+        del.setAttribute('class', 'delIcon');
+        del.setAttribute('src', '../media/Icons/deleteFriendIcon.png');
+        del.setAttribute('id', user.id);
 
-    options.appendChild(button);
-    options.appendChild(chat);
-    options.appendChild(del);
+        options.appendChild(button);
+        options.appendChild(chat);
+        options.appendChild(del);
+    }else{
+        options.appendChild(button);
+        options.appendChild(chat);
+    }
 
     info.appendChild(name);
     info.appendChild(email);
@@ -207,4 +267,4 @@ function removeAllChildNodes(parent) {
 }
 
 export { getMyFriends ,deleteFriendShip, requestFriendShip, acceptFriendShip, sendFriendShip,
-     panelFriend, removeAllChildNodes};
+     panelFriend, removeAllChildNodes, exploreNewUsers};

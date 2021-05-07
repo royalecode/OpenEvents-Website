@@ -1,7 +1,7 @@
 import { logoutUser, User, parseJwt, security } from './basicFunctionalities.js'
 security();
 import {getMyFriends, deleteFriendShip, requestFriendShip, acceptFriendShip,
-     sendFriendShip, panelFriend, removeAllChildNodes} from './moduleFriend.js';
+     sendFriendShip, exploreNewUsers, panelFriend, removeAllChildNodes} from './moduleFriend.js';
 
 window.addEventListener('load', friendsLoad);
 let logoutIcon = document.getElementById('logoutIcon');
@@ -45,6 +45,6 @@ function exploreCallback() {
     exploreBtn.className = "buttonSelected";
     myFriendsBtn.className = "button";
     requestsBtn.className = "button";
-    //getMyFriends();
+    exploreNewUsers();
 }
 
