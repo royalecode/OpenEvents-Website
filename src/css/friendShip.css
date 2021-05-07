@@ -1,7 +1,6 @@
 /* Edmon Bosch Bosch
 Fitxer css amb link des de friendship.html.
 */
-@import url('https://rsms.me/inter/inter.css');
 
 .archive {
     display: grid;
@@ -49,9 +48,24 @@ main{
     color: black;
     margin: 0.5rem;
 }
+
+.buttonSelected {
+    transition: all .2s ease-in-out;
+    -webkit-appearance: none;
+    border-radius: 100px;
+    font-family: inherit;
+    appearance: none;
+    background: #3376b4;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 10px 20px;
+    outline: none;
+    border: none;
+    color: white;
+    margin: 0.5rem;
+}
   
-.button:hover,
-.button.active {
+.button:hover{
     opacity: 1;
     color: white;
 }

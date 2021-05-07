@@ -41,7 +41,11 @@ function profileLoad() {
             name.placeholder = user.name;
             lastname.placeholder = user.lastname;
             email.placeholder = user.email;
-            image.src = `http://puigmal.salle.url.edu/img/${user.image}`;
+            if(user.image){
+                image.src = `http://puigmal.salle.url.edu/img/${user.image}`;
+            }else{
+                image.src = '../media/avatar.png';
+            }
         }
     })
     .catch(ex => {

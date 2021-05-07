@@ -18,7 +18,7 @@ function getMyFriends(){
             const users = [];
             data.map((m) => users.push(new User(m)));
             console.log(users)
-            users.map((e) => panelFriend(e));
+            users.map((e) => panelFriend(e, 0));
         }
     })
     .catch(ex => {
@@ -64,6 +64,10 @@ function requestFriendShip(){
             console.log("No hi ha requests");
         }else{
             console.log(data);
+            const users = [];
+            data.map((m) => users.push(new User(m)));
+            console.log(users)
+            users.map((e) => panelFriend(e, 1));
         }
     })
     .catch(ex => {
@@ -119,7 +123,7 @@ function sendFriendShip(){
         });
 }
 
-function panelFriend(user){
+function panelFriend(user, type){
 
     let archive = document.getElementById('archive');
     let section = document.createElement('section');
@@ -158,7 +162,20 @@ function panelFriend(user){
     let button = document.createElement('button');
     button.setAttribute('class', 'fship');
     button.setAttribute('id', user.id);
-    let text3 = document.createTextNode('Following');
+    let text3;
+    switch(type){
+        case 0:
+            text3 = document.createTextNode('Following');
+            break;
+        case 1:
+            text3 = document.createTextNode('Accept');
+            break;
+        case -1:
+            text3 = document.createTextNode('Follow');
+            break;
+        default:
+            text3 = document.createTextNode('Follow');
+    }
     button.appendChild(text3);
     let chat = document.createElement('img');
     chat.setAttribute('alt', 'chat');
@@ -183,4 +200,11 @@ function panelFriend(user){
     archive.appendChild(section);
 }
 
-export { getMyFriends ,deleteFriendShip, requestFriendShip, acceptFriendShip, sendFriendShip, panelFriend};
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+export { getMyFriends ,deleteFriendShip, requestFriendShip, acceptFriendShip, sendFriendShip,
+     panelFriend, removeAllChildNodes};
