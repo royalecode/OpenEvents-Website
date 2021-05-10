@@ -5,7 +5,6 @@ function setType(number){
     type = number;
 }
 
-
 function getMyFriends(){
     var token = localStorage.getItem('token');
     
