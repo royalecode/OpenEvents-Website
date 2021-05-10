@@ -297,8 +297,6 @@ function delIconPressed(event) {
     console.log(event.target.id + " he clicat eliminar");
     deleteFriendShip(event.target.id);
     document.getElementById(event.target.id).remove();
-
 }
 
-export { getMyFriends ,deleteFriendShip, requestFriendShip, acceptFriendShip, sendFriendShip,
-     panelFriend, removeAllChildNodes, exploreNewUsers, setType};
+export { getMyFriends , requestFriendShip, removeAllChildNodes, exploreNewUsers, setType};

@@ -1,7 +1,7 @@
-import { logoutUser, User, parseJwt, security } from './basicFunctionalities.js'
+import { logoutUser, security } from './basicFunctionalities.js'
 security();
-import {getMyFriends, deleteFriendShip, requestFriendShip, acceptFriendShip,
-     sendFriendShip, exploreNewUsers, removeAllChildNodes, setType} from './moduleFriend.js';
+import {getMyFriends, requestFriendShip, exploreNewUsers, 
+    removeAllChildNodes, setType} from './moduleFriend.js';
 
 window.addEventListener('load', friendsLoad);
 let logoutIcon = document.getElementById('logoutIcon');

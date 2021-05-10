@@ -1,0 +1,72 @@
+$primary-color: #7AA7EC;
+$secondary-color: #92B5EA;
+
+$font-color-primary: rgb(41, 40, 40);
+$font-color-secondary: white;
+
+$time: 1s;
+
+@mixin transform($property) {
+    -webkit-transform: $property;
+    -ms-transform: $property;
+    transform: $property;
+}
+
+@mixin transition($property) {
+    -webkit-transition: $property;
+    -o-transition: $property;
+    transition: $property;
+}
+
+@mixin flex(){
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    background-color: $primary-color;
+    width: 100%;
+    @include flex();
+    justify-content: space-between;
+}
+
+.low-header {
+    background-color: $secondary-color;
+    @include flex();
+    justify-content: space-evenly;
+}
+
+.icons-head {
+    margin-right: 1em;
+}
+
+a {
+    margin: 1em 0em 1em 0em;
+    text-decoration: none;
+    color: $font-color-primary;
+    @include transition($time);
+}
+
+main {
+    margin: 1em;
+}
+
+nav {
+    a {
+        &:hover{
+            color: $font-color-secondary;
+        }
+    }
+}
+
+h1 {
+    font-size: 1.5em;
+    text-align: left;
+    margin-left: 0.5em;
+    @include transition(transform $time);
+    
+    &:hover{
+        color: $font-color-secondary;
+        @include transform(rotate(1080deg));
+    }
+}
