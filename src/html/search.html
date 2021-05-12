@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/profile.css">
     <link rel="stylesheet" href="../css/dist/index.css">
+    <link rel="stylesheet" href="../css/listevent.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="../js/search.js"></script>
 </head>
 <body>
     <header>
@@ -30,9 +33,31 @@
     </header>
     <main>
         <section class="flex-search">
-            <input class="input-search" type="text" id="search" placeholder="Event Name:">
+            <input class="input-search" type="text" id="search" name="search" placeholder="Event Name:">
             <img src="../media/Icons/Search.svg" alt="Search">
         </section>
+
+        <div class="archive" id="appSearch">
+            <article v-for="event in events" class="event">
+                <section class="list-header">
+                     <img v-bind:src="event.image" alt="ImgEvent" class="imageEvent">
+                     <div class="titles">
+                         <p><b>{{event.name}}</b></p>
+                         <p><b>{{event.location}}</b></p>
+                         <p><b>{{event.eventStart_date}} - {{event.eventEnd_date}}</b></p>
+                     </div>
+                 </section>
+                 <section class="list-info">
+                     <p><b>Description: </b>{{event.description}}</p>
+                     <p><b>Type: </b>{{event.type}}</p>
+                 </section>
+                 <section class="icons-event">
+                     <img src="../media/Icons/participateEvent.svg" alt="Add">
+                     <img src="../media/Icons/shareEvent.svg" alt="Share">
+                 </section>
+                 
+             </article> 
+         </div>
     </main>
 </body>
 </html>

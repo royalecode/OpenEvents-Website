@@ -78,6 +78,14 @@ Fitxer css amb link des de listevent.html.
     padding: 0 0.5em;
 }
 
-@media only screen and (min-width: 767px) {
-    
+.imageEvent {
+    width: 10rem;
+    height: 7rem;
+}
+
+@media (max-width: 430px) {
+    .imageEvent {
+        width: 6rem;
+        height: 7rem;
+    }
 }
