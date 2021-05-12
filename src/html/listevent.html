@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../css/dist/index.css">
     <link rel="stylesheet" href="../css/listevent.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script type="text/javascript" src="../js/listevent.js"></script>
+    <script type="module" src="../js/listevent.js"></script>
 </head>
 <body>
     
@@ -50,7 +50,7 @@
                      <p><b>Type: </b>{{event.type}}</p>
                  </section>
                  <section class="icons-event">
-                     <img src="../media/Icons/participateEvent.svg" alt="Add">
+                     <img v-on:click="participate(event.id)" src="../media/Icons/participateEvent.svg" alt="Add">
                      <img src="../media/Icons/shareEvent.svg" alt="Share">
                  </section>
                  
