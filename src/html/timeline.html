@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/dist/index.css">
     <link rel="stylesheet" href="../css/timeline.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="module" src="../js/timeline.js"></script>
 </head>
 <body>
     <header>
@@ -39,7 +41,13 @@
                     <th>Location</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="appTimeline">
+                <tr v-for="event in events">
+                    <td data-label="Name" >{{event.name}}</td>
+                    <td data-label="Start-Date" >{{event.eventStart_date}}</td>
+                    <td data-label="End-Date" >{{event.eventEnd_date}}</td>
+                    <td data-label="Location" >{{event.location}}</td>
+                
                 <tr>
                     <td data-label="Name" >Apple Meeting</td>
                     <td data-label="Start-Date" >14/04/21</td>

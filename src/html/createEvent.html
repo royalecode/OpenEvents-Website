@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/createEvent.css">
     <link rel="stylesheet" href="../css/dist/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="module" src="../js/createEvent.js"></script>
 </head>
 <body>
     <header>
@@ -34,21 +36,22 @@
             <img class="upload-image" src="../media/upload.png" alt="Image of Upload">
             <figcaption>Upload Image Event</figcaption>
         </figure>
-        <form action="listevent.html">
-            <input class="input-form"  type="text" id="name" name="name" placeholder="Name:"><br>
-            <input class="input-form" type="text" id="location" name="location" placeholder="Location:"><br>
-            <input class="input-form" type="text" id="area" name="area" placeholder="Description:"><br>  
+        <form id="app" v-on:submit.prevent>
+            <input type="file" id="inputFile" @change="previewFiles" ref="myFiles">
+            <input v-model="event.name" class="input-form"  type="text" id="name" name="name" placeholder="Name:"><br>
+            <input v-model="event.location" class="input-form" type="text" id="location" name="location" placeholder="Location:"><br>
+            <input v-model="event.description" class="input-form" type="text" id="area" name="area" placeholder="Description:"><br>  
             <div class="start-date">
                 <label class="label-date" for="start-date">Start-Date:</label>              
-                <input class="indate input-form" type="date" id="start-date" name="start-date"><br>
+                <input v-model="event.eventStart_date" class="indate input-form" type="date" id="start-date" name="start-date"><br>
             </div>
             <div class="end-date">
                 <label class="label-date" for="end-date">End-Date:</label>
-                <input class="indate input-form" type="date" id="end-date" name="end-date"><br>
+                <input v-model="event.eventEnd_date" class="indate input-form" type="date" id="end-date" name="end-date"><br>
             </div>
-            <input class="input-form" type="text" id="type" name="type" placeholder="Type Event:"><br>
-            <input class="input-form" type="number" id="participators" name="participators" placeholder="Max Participators:"><br>
-            <input class="create-button" type="submit" value="CREATE">
+            <input v-model="event.type" class="input-form" type="text" id="type" name="type" placeholder="Type Event:"><br>
+            <input v-model="event.n_participators" class="input-form" type="number" id="participators" name="participators" placeholder="Max Participators:"><br>
+            <input v-on:click="submit" class="create-button" type="submit" value="CREATE">
         </form>
         <a class="back-button" href="listevent.html">BACK</a>
     </main>

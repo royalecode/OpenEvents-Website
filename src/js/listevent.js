@@ -58,9 +58,9 @@ function logoutCallback() {
 
 function addParticipation(event_id) {
     var token = localStorage.getItem('token');
-
+    console.log(event_id);
     fetch(`http://puigmal.salle.url.edu/api/events/${event_id}/assistances`, {
-        method: "POST",
+        method: "post",
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -77,6 +77,7 @@ function addParticipation(event_id) {
     .catch(ex => {
         console.log(ex);
     });
+
 
     fetch(`http://puigmal.salle.url.edu/api/events/2/assistances`, {
         method: "GET",
