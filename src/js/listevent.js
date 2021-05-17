@@ -18,7 +18,15 @@ function listPageLoad() {
         methods: {
             participate: function (event_id){
                 console.log(event_id);
-                addParticipation(event_id);
+                this.events.map((e) => {
+                    if(e.id == event_id && e.ok == true){
+                        //addParticipation(event_id);
+                        console.log('change icon');
+                        e.source = "../media/Icons/check.svg"
+                        e.ok = false;
+                    }
+                    return;
+                });
             }
         }
     })
@@ -41,6 +49,8 @@ function loadEvents(){
                 e.eventStart_date = e.eventStart_date.replaceAll("-","/");
                 e.eventEnd_date = e.eventEnd_date.split("T")[0];
                 e.eventEnd_date = e.eventEnd_date.replaceAll("-","/");
+                e.source = "../media/Icons/participateEvent.svg";
+                e.ok = true;
                 return e;
               })
             app.events = data;
@@ -79,7 +89,7 @@ function addParticipation(event_id) {
     });
 
 
-    fetch(`http://puigmal.salle.url.edu/api/events/2/assistances`, {
+    fetch(`http://puigmal.salle.url.edu/api/events/3/assistances`, {
         method: "GET",
         headers: {
             'Authorization': `Bearer ${token}`

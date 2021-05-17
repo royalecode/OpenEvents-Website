@@ -243,7 +243,7 @@ function panelFriend(user, type){
         let del = document.createElement('img');
         del.setAttribute('alt', 'delete');
         del.setAttribute('class', 'delIcon');
-        del.setAttribute('src', '../media/Icons/deleteFriendIcon.png');
+        del.setAttribute('src', '../media/Icons/delete.svg');
         del.setAttribute('id', user.id);
         del.addEventListener('click', delIconPressed);
 
