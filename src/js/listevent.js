@@ -1,4 +1,4 @@
-import {logoutUser, security } from './basicFunctionalities.js';
+import {logoutUser, security, parseJwt } from './basicFunctionalities.js';
 security();
 window.addEventListener('load', listPageLoad);
 let logoutIcon = document.getElementById('logoutIcon');
@@ -33,7 +33,7 @@ function listPageLoad() {
 }
 
 function loadEvents(){
-    fetch(`http://puigmal.salle.url.edu/api/events/`, {
+   /*fetch(`http://puigmal.salle.url.edu/api/events/`, {
         method: "GET"
     })
     .then((res) => res.json())
@@ -43,8 +43,12 @@ function loadEvents(){
         }else{
             console.log(data);
             data.map((e) => {
-                e.image = "http://puigmal.salle.url.edu/img/" + e.image;
-                //console.log(e.image);
+                if(!e.image.startsWith("http")){
+                    e.image = "http://puigmal.salle.url.edu/img/" + e.image;
+                    console.log(e.image);
+                }
+                console.log(e.image);
+                
                 e.eventStart_date = e.eventStart_date.split("T")[0];
                 e.eventStart_date = e.eventStart_date.replaceAll("-","/");
                 e.eventEnd_date = e.eventEnd_date.split("T")[0];
@@ -54,6 +58,94 @@ function loadEvents(){
                 return e;
               })
             app.events = data;
+        }
+    })
+    .catch(ex => {
+        console.log(ex);
+    });*/
+
+
+    var token = localStorage.getItem('token');
+    const listevents = [];
+    const assistances = [];
+
+    fetch(`http://puigmal.salle.url.edu/api/events`, {
+        method: "GET"
+    })
+    .then((res) => res.json())
+    .then((data) => {
+        if(data.length == 0){
+            console.log("No hi ha events a la plataforma");
+        }else{
+            data.map((m) => listevents.push(m));
+            console.log(listevents);
+            fetch(`http://puigmal.salle.url.edu/api/users/${parseJwt(token).id}/assistances`, {
+                method: "GET",
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                if(data.length == 0){
+                    console.log("No hi ha assistencies de l'usuari");
+                    listevents.map((e) => {
+                        if(!e.image.startsWith("http")){
+                            e.image = "http://puigmal.salle.url.edu/img/" + e.image;
+                        }
+                        if(e.eventStart_date != null){
+                            e.eventStart_date = e.eventStart_date.split("T")[0];
+                            e.eventStart_date = e.eventStart_date.replaceAll("-","/");
+                        }
+                        if(e.eventEnd_date != null){
+                            e.eventEnd_date = e.eventEnd_date.split("T")[0];
+                            e.eventEnd_date = e.eventEnd_date.replaceAll("-","/");
+                        }
+                        e.source = "../media/Icons/participateEvent.svg";
+                        e.ok = true;
+                        return e;
+                      })
+                    app.events = listevents;
+                }else{
+                    console.log(data);
+                    data.map((m) => assistances.push(m));
+                    let i = 0;
+                    let j = 0;
+                    listevents.forEach(f => {
+                        assistances.forEach(e => {
+                            if(e.id === f.id){
+                                i++;
+                                f.source = "../media/Icons/check.svg";
+                                f.ok = false;
+                            }else{
+                                j++;
+                                f.source = "../media/Icons/participateEvent.svg";
+                                f.ok = true;
+                            }
+
+                            if(!f.image.startsWith("http")){
+                                f.image = "http://puigmal.salle.url.edu/img/" + f.image;
+                            }
+                            if(f.eventStart_date != null){
+                                f.eventStart_date = f.eventStart_date.split("T")[0];
+                                f.eventStart_date = f.eventStart_date.replaceAll("-","/");
+                            }
+                            if(f.eventEnd_date != null){
+                                f.eventEnd_date = f.eventEnd_date.split("T")[0];
+                                f.eventEnd_date = f.eventEnd_date.replaceAll("-","/");
+                            }
+                        });
+                        console.log(i);
+                        console.log(j);
+                        i =0;
+                        j = 0;
+                    });
+                    app.events = listevents;
+                }
+            })
+            .catch(ex => {
+                console.log(ex);
+            });
         }
     })
     .catch(ex => {

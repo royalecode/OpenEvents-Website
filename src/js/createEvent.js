@@ -12,7 +12,8 @@ function loadPage() {
         data: {
             event: {
                 name: '',
-                files: [],
+                //files: [],
+                image: '',
                 date: new Date().toString(),
                 location: '',
                 description: '',
@@ -40,7 +41,8 @@ function createEvent(){
 
     const formData = new FormData();
     formData.append('name', app.event.name);
-    formData.append('image', app.event.files[0]);
+    //formData.append('image', app.event.files[0]);
+    formData.append('image', app.event.image);
     //formData.append('date', app.event.date);
     formData.append('location', app.event.location);
     formData.append('description', app.event.description);

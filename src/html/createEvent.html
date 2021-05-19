@@ -37,7 +37,8 @@
             <figcaption>Upload Image Event</figcaption>
         </figure>
         <form id="app" v-on:submit.prevent>
-            <input type="file" id="inputFile" @change="previewFiles" ref="myFiles">
+            <!--<input type="file" id="inputFile" @change="previewFiles" ref="myFiles">-->
+            <input v-model="event.image" class="input-form" type="text" id="fileUrl" placeholder="Image url">
             <input v-model="event.name" class="input-form"  type="text" id="name" name="name" placeholder="Name:"><br>
             <input v-model="event.location" class="input-form" type="text" id="location" name="location" placeholder="Location:"><br>
             <input v-model="event.description" class="input-form" type="text" id="area" name="area" placeholder="Description:"><br>  
