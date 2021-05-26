@@ -102,7 +102,7 @@ function acceptFriendShip(id){
     });
 }
 
-function sendFriendShip(id){
+function sendFriendShip(id, event){
     var token = localStorage.getItem('token');
     fetch(`http://puigmal.salle.url.edu/api/friends/${id}`, {
             method: "POST",
@@ -114,9 +114,12 @@ function sendFriendShip(id){
             if (!response.ok) {
                 response.json().then((error) => {
                     console.log(error);
+                    console.log('Ja li havies enviat una peticio');
+                    event.target.innerText = "Already sent";
                 });
             } else {
                 console.log("Enviament d'amistat correcte");
+                event.target.innerText = "Pending";
             }
         })
         .catch(ex => {
@@ -124,7 +127,7 @@ function sendFriendShip(id){
         });
 }
 
-async function exploreNewUsers(){
+function exploreNewUsers(){
     var token = localStorage.getItem('token');
     const friends = [];
     const users = [];
@@ -156,17 +159,34 @@ async function exploreNewUsers(){
                 }else{
                     data.map((m) => users.push(new User(m)));
 
-                    const exploreNewUsers = [];
+                    /*const exploreNewUsers = [];
                     users.forEach(e => {
                         friends.forEach(f => {
                             if(e.id != f.id && e.id != parseJwt(token).id){
-                                exploreNewUsers.push(e);
+                                //exploreNewUsers.push(e);
+                                users.remove(e);
                             }
                         })
-                    })
+                    })*/
+                    //let result = [];
+                    //let istopush = false;
+                    friends.forEach((e) => {
+                        users.filter(f => {
+                            if(f.id != e.id && f.id != parseJwt(token).id){
+                                return f;
+                            }else{
+                                console.log(e.id);
+                                console.log(f.id);
+                            }
 
-                    console.log(exploreNewUsers);
-                    exploreNewUsers.map((e) => panelFriend(e, -1));
+                        });
+                    });
+
+                    console.log(users);
+
+                    //console.log(exploreNewUsers);
+                    //exploreNewUsers.map((e) => panelFriend(e, -1));
+                    users.map((e) => panelFriend(e, -1)); 
                 }
             })
             .catch(ex => {
@@ -194,7 +214,7 @@ function panelFriend(user, type){
     }else if(!user.image){
         img.setAttribute('src', '../media/avatar.png');
     }else{
-        let url = 'http://puigmal.salle.url.edu/img/' + user.image;
+        let url = 'http://puigmal.salle.url.edu/img/' + user.image;            
         img.setAttribute('src', url);
     }
 
@@ -283,8 +303,7 @@ function actionBtnPressed(event) {
             console.log(event.target);
             break;
         case -1:
-            sendFriendShip(event.target.id);
-            event.target.innerText = "Pending";
+            sendFriendShip(event.target.id, event);
             console.log(event.target);
             break;
         default:

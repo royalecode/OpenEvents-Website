@@ -112,7 +112,7 @@ function acceptFriendShip(id) {
   });
 }
 
-function sendFriendShip(id) {
+function sendFriendShip(id, event) {
   var token = localStorage.getItem('token');
   fetch("http://puigmal.salle.url.edu/api/friends/".concat(id), {
     method: "POST",
@@ -123,9 +123,12 @@ function sendFriendShip(id) {
     if (!response.ok) {
       response.json().then(function (error) {
         console.log(error);
+        console.log('Ja li havies enviat una peticio');
+        event.target.innerText = "Already sent";
       });
     } else {
       console.log("Enviament d'amistat correcte");
+      event.target.innerText = "Pending";
     }
   })["catch"](function (ex) {
     console.log(ex);
@@ -133,70 +136,73 @@ function sendFriendShip(id) {
 }
 
 function exploreNewUsers() {
-  var token, friends, users;
-  return regeneratorRuntime.async(function exploreNewUsers$(_context) {
-    while (1) {
-      switch (_context.prev = _context.next) {
-        case 0:
-          token = localStorage.getItem('token');
-          friends = [];
-          users = [];
-          fetch("http://puigmal.salle.url.edu/api/friends", {
-            method: "GET",
-            headers: {
-              'Authorization': "Bearer ".concat(token)
-            }
-          }).then(function (res) {
-            return res.json();
-          }).then(function (data) {
-            if (data.length == 0) {
-              console.log("El usuari no té amics");
-            } else {
-              data.map(function (m) {
-                return friends.push(new _basicFunctionalities.User(m));
-              });
-              console.log(friends);
-              fetch("http://puigmal.salle.url.edu/api/users", {
-                method: "GET",
-                headers: {
-                  'Authorization': "Bearer ".concat(token)
-                }
-              }).then(function (res) {
-                return res.json();
-              }).then(function (data) {
-                if (data.length == 0) {
-                  console.log("No hi ha usuaris a la platafroma");
-                } else {
-                  data.map(function (m) {
-                    return users.push(new _basicFunctionalities.User(m));
-                  });
-                  var _exploreNewUsers = [];
-                  users.forEach(function (e) {
-                    friends.forEach(function (f) {
-                      if (e.id != f.id && e.id != (0, _basicFunctionalities.parseJwt)(token).id) {
-                        _exploreNewUsers.push(e);
-                      }
-                    });
-                  });
-                  console.log(_exploreNewUsers);
-
-                  _exploreNewUsers.map(function (e) {
-                    return panelFriend(e, -1);
-                  });
-                }
-              })["catch"](function (ex) {
-                console.log(ex);
-              });
-            }
-          })["catch"](function (ex) {
-            console.log(ex);
-          });
-
-        case 4:
-        case "end":
-          return _context.stop();
-      }
+  var token = localStorage.getItem('token');
+  var friends = [];
+  var users = [];
+  fetch("http://puigmal.salle.url.edu/api/friends", {
+    method: "GET",
+    headers: {
+      'Authorization': "Bearer ".concat(token)
     }
+  }).then(function (res) {
+    return res.json();
+  }).then(function (data) {
+    if (data.length == 0) {
+      console.log("El usuari no té amics");
+    } else {
+      data.map(function (m) {
+        return friends.push(new _basicFunctionalities.User(m));
+      });
+      console.log(friends);
+      fetch("http://puigmal.salle.url.edu/api/users", {
+        method: "GET",
+        headers: {
+          'Authorization': "Bearer ".concat(token)
+        }
+      }).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        if (data.length == 0) {
+          console.log("No hi ha usuaris a la platafroma");
+        } else {
+          data.map(function (m) {
+            return users.push(new _basicFunctionalities.User(m));
+          });
+          /*const exploreNewUsers = [];
+          users.forEach(e => {
+              friends.forEach(f => {
+                  if(e.id != f.id && e.id != parseJwt(token).id){
+                      //exploreNewUsers.push(e);
+                      users.remove(e);
+                  }
+              })
+          })*/
+          //let result = [];
+          //let istopush = false;
+
+          friends.forEach(function (e) {
+            users.filter(function (f) {
+              if (f.id != e.id && f.id != (0, _basicFunctionalities.parseJwt)(token).id) {
+                return f;
+              } else {
+                console.log(e.id);
+                console.log(f.id);
+              }
+            });
+          });
+          console.log(users); //console.log(exploreNewUsers);
+          //exploreNewUsers.map((e) => panelFriend(e, -1));
+
+          users.map(function (e) {
+            return panelFriend(e, -1);
+          });
+        }
+      })["catch"](function (ex) {
+        console.log(ex);
+      });
+    }
+  })["catch"](function (ex) {
+    console.log(ex);
   });
 }
 
@@ -304,8 +310,7 @@ function actionBtnPressed(event) {
       break;
 
     case -1:
-      sendFriendShip(event.target.id);
-      event.target.innerText = "Pending";
+      sendFriendShip(event.target.id, event);
       console.log(event.target);
       break;
 

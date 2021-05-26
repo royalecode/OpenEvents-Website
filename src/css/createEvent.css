@@ -2,6 +2,18 @@
 Fitxer css amb link des de createEvent.html.
 */
 
+.checkresponse {
+    color: rgb(26, 150, 26);
+    text-align: center;
+    font-weight: bold;
+}
+
+.checkresponse-error {
+    color: red;
+    text-align: center;
+    font-weight: bold;
+}
+
 .create-button {
     background-color: #92B5EA;
     color: white;

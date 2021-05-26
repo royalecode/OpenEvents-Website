@@ -32,10 +32,7 @@
         </nav>
     </header>
     <main>
-        <figure>
-            <img class="upload-image" src="../media/upload.png" alt="Image of Upload">
-            <figcaption>Upload Image Event</figcaption>
-        </figure>
+        <p id="checkresponse" class="checkresponse"></p>
         <form id="app" v-on:submit.prevent>
             <!--<input type="file" id="inputFile" @change="previewFiles" ref="myFiles">-->
             <input v-model="event.image" class="input-form" type="text" id="fileUrl" placeholder="Image url">

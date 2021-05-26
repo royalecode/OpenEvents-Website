@@ -66,9 +66,17 @@ function createEvent(){
         if (!response.ok) {
             response.json().then((error) => {
                 console.log(error);
+                let response = document.getElementById('checkresponse');
+                let text = document.createTextNode('Error al crear el event');
+                response.appendChild(text);
+                response.removeAttribute('class', 'checkresponse');
+                response.setAttribute('class', 'checkresponse-error');
             });
         } else {
             console.log("Event creat correctament");
+            let response = document.getElementById('checkresponse');
+            let text = document.createTextNode('Event creat correctament, clicka Back per tornar a la feedback');
+            response.appendChild(text);
         }
     })
     .catch(ex => {
