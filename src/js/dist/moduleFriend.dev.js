@@ -30,13 +30,13 @@ function getMyFriends() {
     if (data.length == 0) {
       console.log("El usuari no té amics");
     } else {
-      console.log(data);
+      //console.log(data);
       var users = [];
-      data.map(function (m) {
+      data.forEach(function (m) {
         return users.push(new _basicFunctionalities.User(m));
       });
       console.log(users);
-      users.map(function (e) {
+      users.forEach(function (e) {
         return panelFriend(e, 0);
       });
     }
@@ -79,11 +79,11 @@ function requestFriendShip() {
       console.log("No hi ha requests");
     } else {
       var users = [];
-      data.map(function (m) {
+      data.forEach(function (m) {
         return users.push(new _basicFunctionalities.User(m));
       });
       console.log(users);
-      users.map(function (e) {
+      users.forEach(function (e) {
         return panelFriend(e, 1);
       });
     }
@@ -137,9 +137,8 @@ function sendFriendShip(id, event) {
 
 function exploreNewUsers() {
   var token = localStorage.getItem('token');
-  var friends = [];
   var users = [];
-  fetch("http://puigmal.salle.url.edu/api/friends", {
+  fetch("http://puigmal.salle.url.edu/api/users", {
     method: "GET",
     headers: {
       'Authorization': "Bearer ".concat(token)
@@ -148,57 +147,24 @@ function exploreNewUsers() {
     return res.json();
   }).then(function (data) {
     if (data.length == 0) {
-      console.log("El usuari no té amics");
+      console.log("No hi ha usuaris a la platafroma");
     } else {
       data.map(function (m) {
-        return friends.push(new _basicFunctionalities.User(m));
+        return users.push(new _basicFunctionalities.User(m));
       });
-      console.log(friends);
-      fetch("http://puigmal.salle.url.edu/api/users", {
-        method: "GET",
-        headers: {
-          'Authorization': "Bearer ".concat(token)
+      console.log(users);
+      var _exploreNewUsers = [];
+      _exploreNewUsers = users.filter(function (e) {
+        if (e.id != (0, _basicFunctionalities.parseJwt)(token).id) {
+          return true;
         }
-      }).then(function (res) {
-        return res.json();
-      }).then(function (data) {
-        if (data.length == 0) {
-          console.log("No hi ha usuaris a la platafroma");
-        } else {
-          data.map(function (m) {
-            return users.push(new _basicFunctionalities.User(m));
-          });
-          /*const exploreNewUsers = [];
-          users.forEach(e => {
-              friends.forEach(f => {
-                  if(e.id != f.id && e.id != parseJwt(token).id){
-                      //exploreNewUsers.push(e);
-                      users.remove(e);
-                  }
-              })
-          })*/
-          //let result = [];
-          //let istopush = false;
 
-          friends.forEach(function (e) {
-            users.filter(function (f) {
-              if (f.id != e.id && f.id != (0, _basicFunctionalities.parseJwt)(token).id) {
-                return f;
-              } else {
-                console.log(e.id);
-                console.log(f.id);
-              }
-            });
-          });
-          console.log(users); //console.log(exploreNewUsers);
-          //exploreNewUsers.map((e) => panelFriend(e, -1));
+        return false;
+      });
+      console.log(_exploreNewUsers);
 
-          users.map(function (e) {
-            return panelFriend(e, -1);
-          });
-        }
-      })["catch"](function (ex) {
-        console.log(ex);
+      _exploreNewUsers.forEach(function (e) {
+        return panelFriend(e, -1);
       });
     }
   })["catch"](function (ex) {
@@ -215,10 +181,10 @@ function panelFriend(user, type) {
   img.setAttribute('class', 'avatar');
   img.setAttribute('alt', 'avatar');
 
-  if (user.image.startsWith('http')) {
-    img.setAttribute('src', user.image);
-  } else if (!user.image) {
+  if (!user.image) {
     img.setAttribute('src', '../media/avatar.png');
+  } else if (user.image.startsWith('http')) {
+    img.setAttribute('src', user.image);
   } else {
     var url = 'http://puigmal.salle.url.edu/img/' + user.image;
     img.setAttribute('src', url);

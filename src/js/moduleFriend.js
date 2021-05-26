@@ -19,11 +19,11 @@ function getMyFriends(){
         if(data.length == 0){
             console.log("El usuari no té amics");
         }else{
-            console.log(data);
+            //console.log(data);
             const users = [];
-            data.map((m) => users.push(new User(m)));
-            console.log(users)
-            users.map((e) => panelFriend(e, 0));
+            data.forEach((m) => users.push(new User(m)));
+            console.log(users);
+            users.forEach((e) => panelFriend(e, 0));
         }
     })
     .catch(ex => {
@@ -69,9 +69,9 @@ function requestFriendShip(){
             console.log("No hi ha requests");
         }else{
             const users = [];
-            data.map((m) => users.push(new User(m)));
+            data.forEach((m) => users.push(new User(m)));
             console.log(users)
-            users.map((e) => panelFriend(e, 1));
+            users.forEach((e) => panelFriend(e, 1));
         }
     })
     .catch(ex => {
@@ -129,10 +129,9 @@ function sendFriendShip(id, event){
 
 function exploreNewUsers(){
     var token = localStorage.getItem('token');
-    const friends = [];
-    const users = [];
+    let users = [];
 
-    fetch(`http://puigmal.salle.url.edu/api/friends`, {
+    fetch(`http://puigmal.salle.url.edu/api/users`, {
         method: "GET",
         headers: {
             'Authorization': `Bearer ${token}`
@@ -141,63 +140,28 @@ function exploreNewUsers(){
     .then((res) => res.json())
     .then((data) => {
         if(data.length == 0){
-            console.log("El usuari no té amics");
+            console.log("No hi ha usuaris a la platafroma");
         }else{
-            data.map((m) => friends.push(new User(m)));
-            console.log(friends);
-
-            fetch(`http://puigmal.salle.url.edu/api/users`, {
-                method: "GET",
-                headers: {
-                    'Authorization': `Bearer ${token}`
+            data.map((m) => users.push(new User(m)));
+            console.log(users);
+            
+            let exploreNewUsers = [];
+            exploreNewUsers = users.filter((e) => {
+                if(e.id != parseJwt(token).id){
+                    return true;
                 }
-            })
-            .then((res) => res.json())
-            .then((data) => {
-                if(data.length == 0){
-                    console.log("No hi ha usuaris a la platafroma");
-                }else{
-                    data.map((m) => users.push(new User(m)));
-
-                    /*const exploreNewUsers = [];
-                    users.forEach(e => {
-                        friends.forEach(f => {
-                            if(e.id != f.id && e.id != parseJwt(token).id){
-                                //exploreNewUsers.push(e);
-                                users.remove(e);
-                            }
-                        })
-                    })*/
-                    //let result = [];
-                    //let istopush = false;
-                    friends.forEach((e) => {
-                        users.filter(f => {
-                            if(f.id != e.id && f.id != parseJwt(token).id){
-                                return f;
-                            }else{
-                                console.log(e.id);
-                                console.log(f.id);
-                            }
-
-                        });
-                    });
-
-                    console.log(users);
-
-                    //console.log(exploreNewUsers);
-                    //exploreNewUsers.map((e) => panelFriend(e, -1));
-                    users.map((e) => panelFriend(e, -1)); 
-                }
-            })
-            .catch(ex => {
-                console.log(ex);
+                return false;
             });
+            
+            console.log(exploreNewUsers);
+            exploreNewUsers.forEach((e) => panelFriend(e, -1));
         }
     })
     .catch(ex => {
         console.log(ex);
     });
 }
+
 
 function panelFriend(user, type){
 
@@ -209,10 +173,10 @@ function panelFriend(user, type){
     let img = document.createElement('img');
     img.setAttribute('class', 'avatar');
     img.setAttribute('alt', 'avatar');
-    if(user.image.startsWith('http')){
-        img.setAttribute('src', user.image);
-    }else if(!user.image){
+    if(!user.image){
         img.setAttribute('src', '../media/avatar.png');
+    }else if(user.image.startsWith('http')){
+        img.setAttribute('src', user.image);        
     }else{
         let url = 'http://puigmal.salle.url.edu/img/' + user.image;            
         img.setAttribute('src', url);

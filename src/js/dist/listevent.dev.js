@@ -184,20 +184,22 @@ function addParticipation(event_id) {
   })["catch"](function (ex) {
     console.log(ex);
   });
-  fetch("http://puigmal.salle.url.edu/api/events/3/assistances", {
-    method: "GET",
-    headers: {
-      'Authorization': "Bearer ".concat(token)
-    }
-  }).then(function (res) {
-    return res.json();
-  }).then(function (data) {
-    if (data.length == 0) {
-      console.log("No hi assistents a l'event");
-    } else {
-      console.log(data);
-    }
-  })["catch"](function (ex) {
-    console.log(ex);
-  });
+  /*fetch(`http://puigmal.salle.url.edu/api/events/3/assistances`, {
+      method: "GET",
+      headers: {
+          'Authorization': `Bearer ${token}`
+      }
+  })
+  .then((res) => res.json())
+  .then((data) => {
+      if(data.length == 0){
+          console.log("No hi assistents a l'event");
+      }else{
+          console.log(data);
+          
+      }
+  })
+  .catch(ex => {
+      console.log(ex);
+  });*/
 }

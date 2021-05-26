@@ -181,7 +181,7 @@ function addParticipation(event_id) {
     });
 
 
-    fetch(`http://puigmal.salle.url.edu/api/events/3/assistances`, {
+    /*fetch(`http://puigmal.salle.url.edu/api/events/3/assistances`, {
         method: "GET",
         headers: {
             'Authorization': `Bearer ${token}`
@@ -198,5 +198,5 @@ function addParticipation(event_id) {
     })
     .catch(ex => {
         console.log(ex);
-    });
+    });*/
 }
