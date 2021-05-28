@@ -20,9 +20,9 @@ function getMyFriends(){
             console.log("El usuari no té amics");
         }else{
             //console.log(data);
-            const users = [];
+            let users = [];
             data.forEach((m) => users.push(new User(m)));
-            console.log(users);
+            //console.log(users);
             users.forEach((e) => panelFriend(e, 0));
         }
     })

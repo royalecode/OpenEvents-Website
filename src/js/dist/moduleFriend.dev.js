@@ -34,8 +34,8 @@ function getMyFriends() {
       var users = [];
       data.forEach(function (m) {
         return users.push(new _basicFunctionalities.User(m));
-      });
-      console.log(users);
+      }); //console.log(users);
+
       users.forEach(function (e) {
         return panelFriend(e, 0);
       });
