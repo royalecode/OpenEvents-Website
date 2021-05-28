@@ -63,7 +63,6 @@ function loadEvents(isFilter){
         }else{
             console.log(data);
             data.map((e) => {
-                //console.log(e.image);
                 if(!e.image.startsWith("http")){
                     e.image = "http://puigmal.salle.url.edu/img/" + e.image;
                 }

@@ -35,11 +35,14 @@ function loadEventsAssistanceFinished(){
             console.log(data);
             data.map((e) => {
                 e.image = "http://puigmal.salle.url.edu/img/" + e.image;
-                //console.log(e.image);
-                e.eventStart_date = e.eventStart_date.split("T")[0];
-                e.eventStart_date = e.eventStart_date.replaceAll("-","/");
-                e.eventEnd_date = e.eventEnd_date.split("T")[0];
-                e.eventEnd_date = e.eventEnd_date.replaceAll("-","/");
+                if(e.eventStart_date != null){
+                    e.eventStart_date = e.eventStart_date.split("T")[0];
+                    e.eventStart_date = e.eventStart_date.replaceAll("-","/");
+                }
+                if(e.eventEnd_date != null){
+                    e.eventEnd_date = e.eventEnd_date.split("T")[0];
+                    e.eventEnd_date = e.eventEnd_date.replaceAll("-","/");
+                }
                 return e;
               })
             app.events = data;
