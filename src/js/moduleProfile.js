@@ -1,5 +1,10 @@
 import {parseJwt} from './basicFunctionalities.js'
 
+/**
+ * Function to tell the API we want to delete our own user from the platform. If the process goes
+ * well, then we remove the token from the localStorage and we send the client again to the index
+ * page as in case he wants to sign up.
+ */
 function deleteProfile(){
     var token = localStorage.getItem('token');
 
@@ -25,7 +30,12 @@ function deleteProfile(){
     });  
 }
 
+/**
+ * Function to update the profile with the new information that users has filled in the formulari.
+ * @param {*} obj Object recieved only with the profile data that has been changed.
+ */
 function updateProfile(obj){
+    //Here we create the FormData object as the API demands a multipart/formData content.
     const formData = new FormData();
     for ( var key in obj ) {
         formData.append(key, obj[key]);

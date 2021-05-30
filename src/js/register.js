@@ -1,4 +1,4 @@
-window.addEventListener('load', pageLoaded);
+window.addEventListener('load', pageLoaded); //When the Dom is rendered we apply the callback
 
 function pageLoaded() {
     console.log('Page loaded');
@@ -20,6 +20,7 @@ function pageLoaded() {
         .then((response) => {
             if (!response.ok) {
                 response.json().then((error) => {
+                    //Something wrong with the register so we let the user in the view know what is happening.
                     console.log(error);
                     p = document.getElementById('errResponse');
                     p.innerHTML = "";
@@ -28,6 +29,7 @@ function pageLoaded() {
                 });
             } else {
                 response.json().then((data) => {
+                    //The register has gone well so we redirect the user to the login Page.
                     console.log("Usari registrat correctament");
                     window.location.replace("../html/login.html");
                 });
