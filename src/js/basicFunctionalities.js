@@ -79,4 +79,11 @@ function security() {
     }
 }
 
-export {logoutUser, User, parseJwt, security};
+function checkUserHasCredentials() {
+    if(localStorage.getItem('token')){
+        console.log("El usuari te credencials guardades i pot accedir directament a la Home");
+        window.location.replace("../html/listevent.html");
+    }
+}
+
+export {logoutUser, User, parseJwt, security, checkUserHasCredentials};

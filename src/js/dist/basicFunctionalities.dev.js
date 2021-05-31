@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.logoutUser = logoutUser;
 exports.parseJwt = parseJwt;
 exports.security = security;
+exports.checkUserHasCredentials = checkUserHasCredentials;
 exports.User = void 0;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -106,5 +107,12 @@ function security() {
   if (!localStorage.getItem('token')) {
     console.log("El usuari intentava entrar a la pàgina sense prèviament haver-se registrar o loggejat");
     window.location.replace("../html/index.html");
+  }
+}
+
+function checkUserHasCredentials() {
+  if (localStorage.getItem('token')) {
+    console.log("El usuari te credencials guardades i pot accedir directament a la Home");
+    window.location.replace("../html/listevent.html");
   }
 }
