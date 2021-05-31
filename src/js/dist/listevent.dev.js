@@ -2,13 +2,19 @@
 
 var _basicFunctionalities = require("./basicFunctionalities.js");
 
+var _moduleEvent = require("./moduleEvent.js");
+
 (0, _basicFunctionalities.security)();
 window.addEventListener('load', listPageLoad);
 var logoutIcon = document.getElementById('logoutIcon');
 var app;
+/**
+ * Function called when the page is completely loaded
+ */
 
 function listPageLoad() {
-  logoutIcon.addEventListener('click', logoutCallback);
+  logoutIcon.addEventListener('click', logoutCallback); //Vue object to render all the events. We have participate method when users click the Add Icon to particpate on the event
+
   app = new Vue({
     el: '#app',
     data: {
@@ -21,10 +27,12 @@ function listPageLoad() {
       participate: function participate(event_id) {
         console.log(event_id);
         this.events.map(function (e) {
+          //Here we control if the event was add to Participate before so we don't add two participations.
           if (e.id == event_id && e.ok == true) {
-            addParticipation(event_id);
+            (0, _moduleEvent.addParticipation)(event_id);
             console.log('change icon');
-            e.source = "../media/Icons/check.svg";
+            e.source = "../media/Icons/check.svg"; //In case we have added the participation we changed the icon to tell the user the participations has been added.
+
             e.ok = false;
           }
 
@@ -34,11 +42,17 @@ function listPageLoad() {
     }
   });
 }
+/**
+ * Function that calls the API to get all the Events, and see which ones I am already attached to
+ * particpate.
+ */
+
 
 function loadEvents() {
   var token = localStorage.getItem('token');
   var listevents = [];
-  var assistances = [];
+  var assistances = []; //First fetch to get all the events from the platform
+
   fetch("http://puigmal.salle.url.edu/api/events", {
     method: "GET"
   }).then(function (res) {
@@ -49,8 +63,9 @@ function loadEvents() {
     } else {
       data.map(function (m) {
         return listevents.push(m);
-      });
-      console.log(listevents);
+      }); //console.log(listevents);
+      //Then another fetch to see If as a user I have some participations to events
+
       fetch("http://puigmal.salle.url.edu/api/users/".concat((0, _basicFunctionalities.parseJwt)(token).id, "/assistances"), {
         method: "GET",
         headers: {
@@ -60,7 +75,8 @@ function loadEvents() {
         return res.json();
       }).then(function (data) {
         if (data.length == 0) {
-          console.log("No hi ha assistencies de l'usuari");
+          console.log("No hi ha assistencies de l'usuari"); //In case there are no assistances, we check the image url to be ok, and control if date are null and make them handsome
+
           listevents.map(function (e) {
             if (!e.image.startsWith("http")) {
               e.image = "http://puigmal.salle.url.edu/img/" + e.image;
@@ -82,26 +98,25 @@ function loadEvents() {
           });
           app.events = listevents;
         } else {
-          console.log(data);
+          //console.log(data);
+          //If there are assistances we check which events are them, to change the add icon 
+          //with the check icon and disable the action to them
           data.map(function (m) {
             return assistances.push(m);
           });
-          var i = 0;
-          var j = 0;
           listevents.forEach(function (f) {
             var found = assistances.find(function (element) {
               return element.id == f.id;
             });
 
             if (found) {
-              i++;
               f.source = "../media/Icons/check.svg";
               f.ok = false;
             } else {
-              j++;
               f.source = "../media/Icons/participateEvent.svg";
               f.ok = true;
-            }
+            } //And here the control from the image url and dates.
+
 
             if (!f.image.startsWith("http")) {
               f.image = "http://puigmal.salle.url.edu/img/" + f.image;
@@ -116,13 +131,8 @@ function loadEvents() {
               f.eventEnd_date = f.eventEnd_date.split("T")[0];
               f.eventEnd_date = f.eventEnd_date.replaceAll("-", "/");
             }
-
-            console.log(i);
-            console.log(j);
-            i = 0;
-            j = 0;
           });
-          app.events = listevents;
+          app.events = listevents; //Save the events to the data vue object.
         }
       })["catch"](function (ex) {
         console.log(ex);
@@ -132,29 +142,12 @@ function loadEvents() {
     console.log(ex);
   });
 }
+/**
+ * Function that calls the logoutUser function from the basicFunctionalities
+ */
+
 
 function logoutCallback() {
   console.log("Logout icon clicked");
   (0, _basicFunctionalities.logoutUser)();
-}
-
-function addParticipation(event_id) {
-  var token = localStorage.getItem('token');
-  console.log(event_id);
-  fetch("http://puigmal.salle.url.edu/api/events/".concat(event_id, "/assistances"), {
-    method: "post",
-    headers: {
-      'Authorization': "Bearer ".concat(token)
-    }
-  }).then(function (response) {
-    if (!response.ok) {
-      response.json().then(function (error) {
-        console.log(error);
-      });
-    } else {
-      console.log("Participació afegida correctament");
-    }
-  })["catch"](function (ex) {
-    console.log(ex);
-  });
 }

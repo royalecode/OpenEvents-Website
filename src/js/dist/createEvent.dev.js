@@ -6,9 +6,15 @@ var _basicFunctionalities = require("./basicFunctionalities.js");
 window.addEventListener('load', loadPage);
 var logoutIcon = document.getElementById('logoutIcon');
 var app;
+/**
+ * Function called when the page is completely loaded
+ */
 
 function loadPage() {
-  logoutIcon.addEventListener('click', logoutCallback);
+  logoutIcon.addEventListener('click', logoutCallback); //Here we create the vue object, with a data object event that will get bind with the inputs
+  //from the html. Then we have the method submit fro the form that calls createEvent(), and also
+  //a method if we want to implement the createEvent with select file image instead of URL.
+
   app = new Vue({
     el: '#app',
     data: {
@@ -35,6 +41,10 @@ function loadPage() {
     }
   });
 }
+/**
+ * Function that mounts the FormData object to sent to the API to register a new event on the platform.
+ */
+
 
 function createEvent() {
   console.log(app.event);
@@ -83,7 +93,8 @@ function createEvent() {
   }).then(function (response) {
     if (!response.ok) {
       response.json().then(function (error) {
-        console.log(error);
+        console.log(error); //The fetch is wrong so we tell to the user that there has been an error.
+
         var response = document.getElementById('checkresponse');
         var text = document.createTextNode('Error al crear el event');
         response.appendChild(text);
@@ -91,7 +102,7 @@ function createEvent() {
         response.setAttribute('class', 'checkresponse-error');
       });
     } else {
-      console.log("Event creat correctament");
+      console.log("Event creat correctament"); //Fetch OK, we tell the user he/she can go back home with the Back Button
 
       var _response = document.getElementById('checkresponse');
 
@@ -103,6 +114,10 @@ function createEvent() {
     console.log(ex);
   });
 }
+/**
+ * Function that calls the logoutUser function from the basicFunctionalities
+ */
+
 
 function logoutCallback() {
   console.log("Logout icon clicked");
