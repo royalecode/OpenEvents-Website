@@ -1,86 +1,48 @@
-<!--
-Edmon Bosch Bosch
-Fitxer per llistar els amics o possibles nous amics de la xarxa social.
--->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <META NAME="ROBOTS" CONTENT="INDEX, NOFOLLOW">
-    <title>FriendShips</title>
-    <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/friendShip.css">
-</head>
-<body>
-    <header>
-        <section class="header">
-            <h1>Open Events</h1>
-            <div class="icons-head">
-                <a href="search.html"><img src="../media/Icons/Search.svg" alt="Search"></a>
-                <a href="index.html"><img src="../media/Icons/Shutdown.svg" alt="Log out"></a>
-            </div>
-        </section>
-        <nav class="low-header">
-            <a href="timeline.html"><b>Timeline</b></a>
-            <a href="listevent.html"><b>List Events</b></a>
-            <a href="../html/profile.html"><b>Profile</b></a>
-        </nav>
-    </header>
-    <main>
-        <div class="friends-list">
-            <div class="pair-friends">
-                <section class="friend first-child">
-                    <img class="avatar" src="../media/joan_casals.png" alt="avatar">
-                    <div class="info">
-                        <p class="name"><b>Joan Casals</b></p>
-                        <p class="email">joan.casals@salle.url.edu</p>
-                        <div class="options">
-                            <button class="fship">Add friend</button>
-                            <img src="../media/Icons/chat.svg" alt="chat">
-                        </div>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="author" content="Edmon Bosch"><meta name="description" content="Fitxer per llistar els amics o possibles nous amics de la xarxa social"><meta name="keywords" content="Events, SocialNetwork, Meet People"><link rel="icon" href="data:;base64,iVBORw0KGgo="><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="ROBOTS" content="INDEX, NOFOLLOW"><title>FriendShips</title><link rel="stylesheet" href="../css/normalize.css"><link rel="stylesheet" href="../css/dist/index.css"><link rel="stylesheet" href="../css/friendShip.css"><script type="module" src="../js/appFriends.js"></script></head><body><header><section class="header"><h1>Open Events</h1><div class="icons-head"><a href="search.html"><img src="../media/Icons/Search.svg" alt="Search"></a><a href="index.html" id="logoutIcon"><img src="../media/Icons/Shutdown.svg" alt="Log out"></a></div></section><nav class="low-header"><a href="timeline.html"><b>Timeline</b></a> <a href="listevent.html"><b>List Events</b></a> <a href="../html/profile.html"><b>Profile</b></a></nav></header><main><div class="buttons"><button id="myFriendsBtn" class="button">My Friends</button> <button id="requestsBtn" class="button">Requests</button> <button id="exploreBtn" class="button">Explore People</button></div><div class="archive" id="archive"><!--<section class="friend">
+                <img class="avatar" src="../media/joan_casals.png" alt="avatar">
+                <div class="info">
+                    <p class="name"><b>Joan Casals</b></p>
+                    <p class="email">joan.casals@salle.url.edu</p>
+                    <div class="options">
+                        <button class="fship">Add friend</button>
+                        <img src="../media/Icons/chat.svg" alt="chat">
+                        <img src="../media/Icons/deleteFriendIcon.png" alt="delete" class="delIcon">
                     </div>
-                </section>
-                <section class="friend">
-                    <img class="avatar" src="../media/artur_alcoverro.png" alt="avatar">
-                    <div class="info">
-                        <p class="name"><b>Artur Alcoverro</b></p>
-                        <p class="email">artur.alcoverro@salle.url.edu</p>
-                        <div class="options">
-                            <button class="fship">Requested</button>
-                            <img src="../media/Icons/chat.svg" alt="chat">
-                        </div>
+                </div>
+            </section>
+            <section class="friend">
+                <img class="avatar" src="../media/artur_alcoverro.png" alt="avatar">
+                <div class="info">
+                    <p class="name"><b>Artur Alcoverro</b></p>
+                    <p class="email">artur.alcoverro@salle.url.edu</p>
+                    <div class="options">
+                        <button class="fship">Requested</button>
+                        <img src="../media/Icons/chat.svg" alt="chat">
+                        <img src="../media/Icons/deleteFriendIcon.png" alt="delete" class="delIcon">
                     </div>
-                </section>
-            </div>
-            <div class="pair-friends">
-                <section class="friend first-child">
-                    <img class="avatar" src="../media/xavier_gomez.png" alt="avatar">
-                    <div class="info">
-                        <p class="name"><b>Xavier Gomez de la Torre</b></p>
-                        <p class="email">xavier.gomez@salle.url.edu</p>
-                        <div class="options">
-                            <button class="fship">Add friend</button>
-                            <img src="../media/Icons/chat.svg" alt="chat">
-                        </div>
+                </div>
+            </section>
+            <section class="friend">
+                <img class="avatar" src="../media/xavier_gomez.png" alt="avatar">
+                <div class="info">
+                    <p class="name"><b>Xavier Gomez de la Torre</b></p>
+                    <p class="email">xavier.gomez@salle.url.edu</p>
+                    <div class="options">
+                        <button class="fship">Add friend</button>
+                        <img src="../media/Icons/chat.svg" alt="chat">
+                        <img src="../media/Icons/deleteFriendIcon.png" alt="delete" class="delIcon">
                     </div>
-                </section>
-                <section class="friend">
-                    <img class="avatar" src="../media/daniel_amo.png" alt="avatar">
-                    <div class="info">
-                        <p class="name"><b>Daniel Amo</b></p>
-                        <p class="email">daniel.amo@salle.url.edu</p>
-                        <div class="options">
-                            <button class="fship">Requested</button>
-                            <img src="../media/Icons/chat.svg" alt="chat">
-                        </div>
+                </div>
+            </section>
+            <section class="friend">
+                <img class="avatar" src="../media/daniel_amo.png" alt="avatar">
+                <div class="info">
+                    <p class="name"><b>Daniel Amo</b></p>
+                    <p class="email">daniel.amo@salle.url.edu</p>
+                    <div class="options">
+                        <button class="fship">Requested</button>
+                        <img src="../media/Icons/chat.svg" alt="chat">
+                        <img src="../media/Icons/deleteFriendIcon.png" alt="delete" class="delIcon">
                     </div>
-                </section>
-            </div>
-        </div>
-    </main>
-</body>
-</html>
+                </div>
+            </section>--></div></main></body></html>

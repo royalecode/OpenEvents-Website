@@ -1,0 +1,26 @@
+{
+  "name": "practica1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/royalecode/Front-End-OpenEvents-Web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/royalecode/Front-End-OpenEvents-Web/issues"
+  },
+  "homepage": "https://github.com/royalecode/Front-End-OpenEvents-Web#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-html-minifier2": "^1.1.11",
+    "gulp-sass": "^4.1.0"
+  }
+}
