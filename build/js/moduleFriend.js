@@ -172,6 +172,11 @@ function exploreNewUsers(){
         if(data.length == 0){
             console.log("No hi ha usuaris a la platafroma");
         }else{
+            //Another example of functional programming, we recieve an array from the API, we dont' change
+            //its value during the next process and we keept the data pure without secondary effects. We also
+            //use function like map, filter, forEach that are Declarative statements as Functional Programming
+            //and not describing how the program works from inside as then it would be imperative statements.
+            
             //In case there are users on the platform, we create the array of users instances.
             data.map((m) => users.push(new User(m)));
             
@@ -184,7 +189,6 @@ function exploreNewUsers(){
                 return false;
             });
             
-            //console.log(exploreNewUsers);
             //For each user we call the panelFriend to draw the users into the DOM
             exploreNewUsers.forEach((e) => panelFriend(e, -1));
         }
@@ -200,6 +204,9 @@ function exploreNewUsers(){
  * @param {*} type The type of user we will draw to personalize the message into the button.
  */
 function panelFriend(user, type){
+    //Exemple de codi FuntionalProgramming ja que els arguments d'entrada en cap moment son modificats
+    //durant tot el transcurs de la funció, simplement s'ulilitzen per obtenir-ne a partir d'ells un resultat
+    //o altre.
 
     let archive = document.getElementById('archive');
     let section = document.createElement('section');
