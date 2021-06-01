@@ -32,7 +32,6 @@ function friendsLoad() {
  * Function that calls the logoutUser function from the basicFunctionalities
  */
 function logoutCallback() {
-    console.log("Logout icon clicked");
     logoutUser();
 }
 

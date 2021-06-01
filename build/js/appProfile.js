@@ -38,7 +38,6 @@ function profileLoad() {
         if(data.length == null){
             console.log("La informació de l'usuari no s'ha trobat o bé no existeix cap usuari amb la id corresponent");
         }else{
-            //console.log(data);
             //The personal user infromation have been recieved and we create an instance of User class
             user = new User(data[0]);
             //We update the placeholders fields with the information recieved.
@@ -61,7 +60,6 @@ function profileLoad() {
  * Function that calls the logoutUser function from the basicFunctionalities
  */
 function logoutCallback() {
-    console.log("Logout icon clicked");
     logoutUser();
 }
 
@@ -70,7 +68,6 @@ function logoutCallback() {
  * when the users clicks the delete butotn.
  */
 function deleteCallback() {
-    console.log('Delete button clicked');
     deleteProfile();
 }
 
@@ -78,14 +75,12 @@ function deleteCallback() {
  * Callback function when user wants to save the new profile information.
  */
 function saveCallback(){
-    console.log('Save button clicked');
     //Here we create the object with only the form fields that are not empty.
     let obj = {};
     if(name.value != ""){ obj.name = name.value; }
     if(lastname.value != ""){ obj.last_name = lastname.value; }
     if(email.value != ""){ obj.email = email.value; }
 
-    console.log('Anem a actualitzar el perfil');
     updateProfile(obj); //We call the function that will get the API to save the information.
 
     //We save the global user with the new profile information.

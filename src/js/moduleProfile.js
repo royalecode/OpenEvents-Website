@@ -40,7 +40,6 @@ function updateProfile(obj){
     for ( var key in obj ) {
         formData.append(key, obj[key]);
     }
-    console.log(formData);
 
     var token = localStorage.getItem('token');
     fetch(`http://puigmal.salle.url.edu/api/users/`, {

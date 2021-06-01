@@ -22,12 +22,10 @@ function listPageLoad() {
         },
         methods: {
             participate: function (event_id){
-                console.log(event_id);
                 this.events.map((e) => {
                     //Here we control if the event was add to Participate before so we don't add two participations.
                     if(e.id == event_id && e.ok == true){
                         addParticipation(event_id);
-                        console.log('change icon');
                         e.source = "../media/Icons/check.svg"; //In case we have added the participation we changed the icon to tell the user the participations has been added.
                         e.ok = false;
                     }
@@ -57,7 +55,6 @@ function loadEvents(){
             console.log("No hi ha events a la plataforma");
         }else{
             data.map((m) => listevents.push(m));
-            //console.log(listevents);
 
             //Then another fetch to see If as a user I have some participations to events
             fetch(`http://puigmal.salle.url.edu/api/users/${parseJwt(token).id}/assistances`, {
@@ -134,6 +131,5 @@ function loadEvents(){
  * Function that calls the logoutUser function from the basicFunctionalities
  */
 function logoutCallback() {
-    console.log("Logout icon clicked");
     logoutUser();
 }

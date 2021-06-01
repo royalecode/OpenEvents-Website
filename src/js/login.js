@@ -1,7 +1,8 @@
+import {checkUserHasCredentials} from './basicFunctionalities.js';
+checkUserHasCredentials();
 window.addEventListener('load', loginLoaded); //When the Dom is rendered we apply the callback
 
 function loginLoaded() {
-    console.log('Page loaded');
     
     let token;
     let p = document.getElementById('errors');
@@ -30,7 +31,6 @@ function loginLoaded() {
             })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data.accessToken);
                 token = data.accessToken;
                 localStorage.setItem('token', token);
                 if(token){

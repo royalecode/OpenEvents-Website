@@ -4,7 +4,6 @@
  */
 function addParticipation(event_id) {
     var token = localStorage.getItem('token');
-    console.log(event_id);
     fetch(`http://puigmal.salle.url.edu/api/events/${event_id}/assistances`, {
         method: "post",
         headers: {

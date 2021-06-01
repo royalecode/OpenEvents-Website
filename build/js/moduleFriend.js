@@ -140,7 +140,6 @@ function sendFriendShip(event){
                     //In this case of error, we supposed the requests was already sent so we modify
                     //the message to let the user know what is happening.
                     console.log(error);
-                    console.log('Ja li havies enviat una peticio');
                     event.target.innerText = "Already sent";
                 });
             } else {
@@ -175,7 +174,6 @@ function exploreNewUsers(){
         }else{
             //In case there are users on the platform, we create the array of users instances.
             data.map((m) => users.push(new User(m)));
-            console.log(users);
             
             //In the next block we filter the array, so we don't want to show our own user to the list of possible friends.
             let exploreNewUsers = [];
@@ -305,10 +303,9 @@ function removeAllChildNodes(parent) {
  * @param {*} event 
  */
 function actionBtnPressed(event) {
-    console.log(event.target.id + " he clickat el action button");
     switch(type){
         case 0:
-            console.log('Ja es el teu amic, la unica opcio que tens és eliminar-lo');
+            console.log('Is your friend already');
             break;
         case 1:
             acceptFriendShip(event.target.id);
@@ -320,7 +317,7 @@ function actionBtnPressed(event) {
             console.log(event.target);
             break;
         default:
-            console.log('Ja es el teu amic, la unica opcio que tens és eliminar-lo');
+            console.log('Is your friend already');
     }
 }
 
@@ -331,7 +328,6 @@ function actionBtnPressed(event) {
  * @param {*} event Event from the click to the deleteIcon
  */
 function delIconPressed(event) {
-    console.log(event.target.id + " he clicat eliminar");
     deleteFriendShip(event.target.id);
     document.getElementById(event.target.id).remove();
 }

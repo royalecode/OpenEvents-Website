@@ -29,12 +29,10 @@ function listSearchPageLoad() {
                 loadEvents(true);
             },
             participate: function (event_id){
-                console.log(event_id);
                 this.events.map((e) => {
                     //Here we control if the event was add to Participate before so we don't add two participations.
                     if(e.id == event_id && e.ok == true){
                         addParticipation(event_id);
-                        console.log('change icon');
                         e.source = "../media/Icons/check.svg";   //In case we have added the participation we changed the icon to tell the user the participations has been added.
                         e.ok = false;
                     }
@@ -81,7 +79,6 @@ function loadEvents(isFilter){
         if(data.length == 0){
             console.log("No hi ha events a la plataforma");
         }else{
-            console.log(data);
             data.map((e) => {
                 //Check if the image is already and url, or we must mount the url
                 if(!e.image.startsWith("http")){
@@ -112,6 +109,5 @@ function loadEvents(isFilter){
  * Function that calls the logoutUser function from the basicFunctionalities
  */
 function logoutCallback() {
-    console.log("Logout icon clicked");
     logoutUser();
 }

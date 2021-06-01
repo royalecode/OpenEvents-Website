@@ -45,7 +45,6 @@ function loadPage() {
  * Function that mounts the FormData object to sent to the API to register a new event on the platform.
  */
 function createEvent(){
-    console.log(app.event);
     var token = localStorage.getItem('token');
 
     const formData = new FormData();
@@ -59,10 +58,6 @@ function createEvent(){
     formData.append('eventEnd_date', app.event.eventEnd_date);
     formData.append('n_participators', app.event.n_participators);
     formData.append('type', app.event.type);
-
-    for (var value of formData.values()) {
-        console.log(value);
-    }
 
     fetch(`http://puigmal.salle.url.edu/api/events`, {
         method: "POST",
@@ -99,6 +94,5 @@ function createEvent(){
  * Function that calls the logoutUser function from the basicFunctionalities
  */
 function logoutCallback() {
-    console.log("Logout icon clicked");
     logoutUser();
 }

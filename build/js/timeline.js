@@ -41,7 +41,6 @@ function loadEventsAssistanceFinished(){
         if(data.length == 0){
             console.log("No has participat a cap event acabat encara");
         }else{
-            //console.log(data);
             data.map((e) => {
                 //Controlling if data are null, and spliting the TimeStamp to show the date more handsome
                 if(e.eventStart_date != null){
@@ -66,6 +65,5 @@ function loadEventsAssistanceFinished(){
  * Function that calls the logoutUser function from the basicFunctionalities
  */
 function logoutCallback() {
-    console.log("Logout icon clicked");
     logoutUser();
 }
